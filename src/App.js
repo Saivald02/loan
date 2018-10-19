@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import CalculateButton from './components/CalculateButton/CalculateButton';
+
 class App extends Component {
   render() {
     return (
@@ -10,6 +12,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload hello everyone testing.
+            https://saivald02-loan.herokuapp.com/
           </p>
           <a
             className="App-link"
@@ -20,6 +23,8 @@ class App extends Component {
             Learn React
           </a>
         </header>
+
+        <CalculateButton/>
       </div>
     );
   }
