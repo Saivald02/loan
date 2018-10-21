@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import CalculateButton from './components/CalculateButton/CalculateButton';
+import TestComp from './components/TestComp/TestComp';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
         </header>
 
         <CalculateButton/>
+        <TestComp />
       </div>
     );
   }
