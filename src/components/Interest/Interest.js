@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { currentInterest } from '../../actions/interestActions';
 
-class Interest extends React.Component {
+export class Interest extends React.Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ class Interest extends React.Component {
     }
 
     inputInterest(value) {
-        
+
         if(value === '' || value === null || value === undefined) {
             console.log('empty');
             this.props.currentInterest(0);
@@ -26,7 +26,7 @@ class Interest extends React.Component {
     }
 
     render() {
-        console.log('from store ' + this.props.interest);
+        //console.log('from store ' + this.props.interest);
         return (
             <div>
                 <p>interest</p>

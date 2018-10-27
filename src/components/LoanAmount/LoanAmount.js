@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { currentLoanAmount } from '../../actions/loanAmountActions';
 
-class LoanAmount extends React.Component {
+export class LoanAmount extends React.Component {
 
   constructor(props) {
       super(props);

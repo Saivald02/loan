@@ -19,7 +19,7 @@ import Term from './components/Term/Term';
 
 // create reaact-app + redux
 // https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="App">
@@ -45,6 +45,7 @@ class App extends Component {
         <Interest />
         <LoanAmount />
         <Term />
+        <div>hello test comp</div>
       </div>
     );
   }

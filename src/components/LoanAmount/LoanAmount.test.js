@@ -1,7 +1,9 @@
+
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 
-import LoanAmount from './LoanAmount';
+import { LoanAmount } from './LoanAmount';
 
 describe('LoanAmount', () => {
 
@@ -9,4 +11,5 @@ describe('LoanAmount', () => {
       const component = shallow(<LoanAmount />);
       expect(component.find('div').first().text('LoanAmount')).toEqual('LoanAmount');
   });
+
 });

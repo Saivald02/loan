@@ -1,6 +1,6 @@
 import React from 'react';
 
-class EndAmount extends React.Component {
+export class EndAmount extends React.Component {
 
     render() {
         //const username = this.state.username;

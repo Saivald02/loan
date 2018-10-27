@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Display extends React.Component {
+export class Display extends React.Component {
 
     render() {
         //const username = this.state.username;

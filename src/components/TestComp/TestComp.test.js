@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 
-import TestComp from './TestComp';
+import { TestComp } from './TestComp';
 
 describe('TestComp', () => {
 

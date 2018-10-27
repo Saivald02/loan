@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { shallow } from 'enzyme';
 
-import CalculateButton from './CalculateButton.js';
+import { CalculateButton } from './CalculateButton.js';
 
 describe('Welcome tests', () => {
 
@@ -14,11 +13,12 @@ describe('Welcome tests', () => {
 
     it('should fail', () => {
         const component = shallow(<CalculateButton />);
-        expect(component.find('div').first().text('hello button')).not.toBe('something else');
+        expect(component.find('div p').first().text('hello button')).not.toBe('something else');
     });
 
     it('should fail', () => {
         const component = shallow(<CalculateButton />);
-        expect(component.find('div').first().text('hello button')).not.toBe('hello buttons');
+        expect(component.find('div p').first().text('hello button')).not.toBe('hello buttons');
     });
+
 });

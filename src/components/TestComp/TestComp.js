@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TestComp extends React.Component {
+export class TestComp extends React.Component {
 
     render() {
         //const username = this.state.username;

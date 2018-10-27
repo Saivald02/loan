@@ -1,7 +1,9 @@
+
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 
-import EndAmount from './EndAmount';
+import { EndAmount } from './EndAmount';
 
 describe('EndAmount', () => {
 
@@ -9,4 +11,5 @@ describe('EndAmount', () => {
       const component = shallow(<EndAmount />);
       expect(component.find('div').first().text('Final amount:')).toEqual('Final amount:');
   });
+
 });

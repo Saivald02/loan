@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { connect } from 'react-redux';
 
 import { currentTerm } from '../../actions/termActions';
 
-class Term extends React.Component {
+export class Term extends React.Component {
 
     inputTerm(value) {
         console.log('Term: ' + value);

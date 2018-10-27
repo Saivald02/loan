@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-
-class CalculateButton extends React.Component {
+//import { shallow } from 'enzyme';
+export class CalculateButton extends React.Component {
 
   componentDidCatch(error, info) {
       console.log(error, info);
