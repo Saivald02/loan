@@ -8,12 +8,15 @@ import EndAmount from './components/EndAmount/EndAmount';
 import LoanAmount from './components/LoanAmount/LoanAmount';
 import Interest from './components/Interest/Interest';
 import Term from './components/Term/Term';
+//import DisplayWrapper from './components/DisplayWrapper/DisplayWrapper';
+import Display from './components/Display/Display';
 
 
 // https://codeclimate.com
 // https://circleci.com
 // https://www.heroku.com/
 // https://saivald02-loan.herokuapp.com/
+
 
 // https://medium.com/codeclan/testing-react-with-jest-and-enzyme-20505fec4675
 
@@ -26,7 +29,6 @@ export class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload hello everyone testing.
             https://saivald02-loan.herokuapp.com/
           </p>
           <a
@@ -38,14 +40,16 @@ export class App extends Component {
             Learn React
           </a>
         </header>
-
-        <CalculateButton/>
-        <TestComp />
-        <EndAmount />
-        <Interest />
-        <LoanAmount />
-        <Term />
-        <div>hello test comp</div>
+        <div className="wrapper"> 
+          <CalculateButton/>
+          <TestComp />
+          <EndAmount />
+          <Interest />
+          <LoanAmount />
+          <Term />
+          <Display />
+          <div>hello test comp</div>
+        </div>
       </div>
     );
   }

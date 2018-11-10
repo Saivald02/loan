@@ -6,7 +6,7 @@ describe('App', () => {
 
   it('should contain the item provided', () => {
       const component = shallow(<App />);
-      expect(component.find('div div').first().text('hello test comp')).toEqual('hello test comp');
+      expect(component.find('div p').first().text('https://saivald02-loan.herokuapp.com/')).toEqual('https://saivald02-loan.herokuapp.com/');
   });
 
 });

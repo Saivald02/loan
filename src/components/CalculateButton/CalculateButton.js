@@ -2,6 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 //import { shallow } from 'enzyme';
+import { calculateNow } from '../../actions/calculateActions';
 export class CalculateButton extends React.Component {
 
   componentDidCatch(error, info) {
@@ -16,9 +17,11 @@ export class CalculateButton extends React.Component {
         };
     }
 
-    amount() {
+    calc(value) {
         //console.log('hello amount function: ' + this.state.amount);
-        console.log(this.props.loanAmount);
+        //console.log(this.props.loanAmount);
+        console.log('trying to calculate ' + value);
+        this.props.calculateNow(value);
     }
 
     render() {
@@ -30,14 +33,14 @@ export class CalculateButton extends React.Component {
             return (
                 <div>
                     <p>hello button</p>
-                    <button type="button" className="" onClick={() => this.amount()}> cant calculate</button>
+                    <button type="button" className="" onClick={() => this.calc(false)}> cant calculate</button>
                 </div>
             );
         } else {
           return (
               <div>
                   <p>hello button</p>
-                  <button type="button" className="" onClick={() => this.amount()}>calculate</button>
+                  <button type="button" className="" onClick={() => this.calc(true)}>calculate</button>
               </div>
           );
         }
@@ -54,4 +57,4 @@ const mapStateToProps = ({ loanAmount, term, interest }) => {
     return { loanAmount, term, interest };
 }
 
-export default connect(mapStateToProps)(CalculateButton);
+export default connect(mapStateToProps, { calculateNow })(CalculateButton);
