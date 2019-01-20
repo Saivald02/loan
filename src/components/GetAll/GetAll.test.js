@@ -6,6 +6,6 @@ describe('GetAll tests', () => {
     it('should contain the item provided', () => {
 
         const component = shallow(<GetAll/>);
-        expect(component.find('ul').text()).toEqual('');
+        expect(component.find('div'));
     });
 });

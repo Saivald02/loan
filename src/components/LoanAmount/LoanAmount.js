@@ -27,8 +27,8 @@ export class LoanAmount extends React.Component {
 
   render() {
       return (
-          <div>
-              <p>LoanAmount</p>
+          <div className="input-item">
+              <p>Amount</p>
               <div className="">
                   <input
                       type="text"

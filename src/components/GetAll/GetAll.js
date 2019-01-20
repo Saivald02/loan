@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const GetAll = ({ children }) => {
+export const GetAll = ({ children }) => {
 
-    return <ul className="">{children}</ul>
+    return <div className="table-middle">{children}</div>
 };
 
 GetAll.propTypes = {

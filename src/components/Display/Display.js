@@ -3,12 +3,53 @@ import { connect } from 'react-redux';
 
 import GetAll from '../GetAll/GetAll';
 import GetAllItem from '../GetAllItem/GetAllItem';
+import GetAllItemExtra from '../GetAllItemExtra/GetAllItemExtra';
+import Table from '../Table/Table';
+import TableExtra from '../TableExtra/TableExtra';
+import FinalWrapper from '../Final/Final';
+
+import CalculateButton from '../CalculateButton/CalculateButton';
+
+import LoanAmount from '../LoanAmount/LoanAmount';
+import Interest from '../Interest/Interest';
+import Term from '../Term/Term';
+import Extra from '../Extra/Extra';
+
+import Canvas from '../Canvas/Canvas';
+
 
 export class Display extends React.Component {
 
-    /*
-    componentDidMount() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isToggleOn: true
 
+        };
+
+        // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+        }));
+    }
+
+    componentDidMount() {
+        /*
+        var data = {
+            extra: this.props.extra,
+            isToggleOn: this.state.isToggleOn,
+            loanAmount: this.props.loanAmount,
+            interest: this.props.interest,
+            term: this.props.term
+        }
+
+        calculations(data);
+        */
+        /*
         console.log('display mount ');
         if(this.props.calculate === true) {
             console.log('calculate NOW!!');
@@ -18,93 +59,89 @@ export class Display extends React.Component {
         for(var i = term; 0 < i; i--) {
               console.log('the term is: ' + i);
         }
-
+        */
         //for(var i = 0; 0 == amountLeft; i++) {
               // setja inn i, interest, payment, whatIsLeft í lista
     }
-    */
+
+
+
+
     render() {
         console.log('display render');
-        //const username = this.state.username;
-        //const userStatus = this.props.logged;
-        //console.log('--- render login ---');
 
-        /*
-            A = P * r(1+r)^n    / (1+r)^n-1
-            A = amount per period
-            P = initial Principal
-            r = interest rate per period  (annual interest.. r/12 for per month)
-            n = total number of payments per period
-        */
-        var list = [];
-        if(this.props.calculate === true) {
-            console.log('calculate NOW!!');
+        var extra = Number(this.props.extra);
+        const { list } = this.props;
+        console.log(list);
+        if(this.props.calculate === true && extra === 0) {
 
-            var amount = Number(this.props.loanAmount);
-            var interest_rate = Number(this.props.interest);
-            var months = Number(this.props.term);
-            var currInterest = 0;
-            var total = 0;
-            months = months * 12;
-            var downPay = Number((amount / months));
-            interest_rate = Number((interest_rate * 0.01) / 12);
+            //const finalObj = {loanAmount: this.props.loanAmount, total_int: total_int, total_pay: total_pay };
+            //const finalCanvass = {loanAmount: 1000, term: 24 };
 
-            // total
-            var total_interest = 0;
-            var total_payment = 0;
+            //const finalCanvas = {loanAmount: this.props.loanAmount, term: months, extraTerm: extraTerm };
+            //console.log(finalCanvas);
+
+
+            return (
+                <div className="">
+
+                    <div className="display">
+                        <Canvas all={list.finalCanvas}/>
+                        <Table/>
+                        <GetAll>
+                            { list.list.map((one, i) => (<GetAllItem key={i} all={one} />)) }
+                        </GetAll>
+                        <FinalWrapper all={list.finalObj}/>
+                    </div>
+                </div>
+            );
+        } else if (this.props.calculate === true && extra > 0) {
+            // show different table for extra payments
+            console.log('extra render -------------');
+            //const finalObj = {loanAmount: this.props.loanAmount, total_int: total_int, total_pay: total_pay };
+            //const finalCanvass = {loanAmount: 1000, term: 24 };
+
+            //const finalCanvas = {loanAmount: this.props.loanAmount, term: months, extraTerm: extraTerm };
+
             /*
-            console.log(interest_rate);
-            console.log(amount);
-            console.log(months);
-            console.log(downPay);
+            <button onClick={this.handleClick}>
+                {this.state.isToggleOn ? 'xxx' : 'Back'}
+            </button>
             */
-
-            for(var i = months, j = 1; 0 <= i; i--, j++) {
-
-                currInterest = Number(interest_rate * amount);
-                total = Number(downPay + currInterest);
-
-                if(downPay > (amount + currInterest)) {
-                    //console.log('amount: ' + amount + ' inter: ' + currInterest + ' payment: ' + amount);
-                    var finalPay = Number(amount + currInterest);
-                    list.push({i: j, amount: amount.toFixed(2), currInterest: currInterest.toFixed(2), downPay: finalPay.toFixed(2), total: finalPay.toFixed(2) });
-                } else {
-                    console.log('amount: ' + amount + ' inter: ' + currInterest + ' payment: ' + downPay);
-                    list.push({i: j, amount: amount.toFixed(2), currInterest: currInterest.toFixed(2), downPay: downPay.toFixed(2), total: total.toFixed(2)});
-                    total_payment = total_payment + downPay + currInterest;
-                    total_interest = total_interest + currInterest;
-                }
-                amount = Number(amount - downPay);
-
-                if(amount < 1) {
-                    break;
-                }
-            }
-
-            var total_pay = total_payment.toFixed(0);
-            var total_int = total_interest.toFixed(0);
-            // component með total tölum neðst..
-            console.log(list);
+            return (
+              <div className="">
+                  <div className="display">
+                      <div>Results</div>
+                      <Canvas all={list.finalCanvas}/>
+                      <TableExtra/>
+                      <GetAll>
+                          { list.list.map((one, i) => (<GetAllItemExtra key={i} all={one} />)) }
+                      </GetAll>
+                      <FinalWrapper all={list.finalObj}/>
+                  </div>
+              </div>
+            );
+        } else {
+            return (
+                <div className="inputs">
+                    <Interest />
+                    <LoanAmount />
+                    <Term />
+                    <Extra />
+                    <CalculateButton />
+                </div>
+            );
         }
-
-        return (
-            <div>
-                <p>hello test comp</p>
-                <GetAll>
-                    { list.map((one, i) => (<GetAllItem key={i} all={one} />)) }
-                </GetAll>
-                <div>Total: payment: { this.props.loanAmount } interest: { total_int } total: { total_pay }</div>
-            </div>
-        );
     }
 };
 
-const mapStateToProps = ({ loanAmount, term, interest, calculate }) => {
+const mapStateToProps = ({ loanAmount, term, interest, calculate, extra, list }) => {
     //console.log('get rooms map');
     //console.log(rooms);
     //console.log(logged);
     //console.log(username);
-    return { loanAmount, term, interest, calculate };
+    return { loanAmount, term, interest, calculate, extra, list };
 }
 
-export default connect(mapStateToProps)(Display);
+
+export default connect(mapStateToProps, { }) (Display);

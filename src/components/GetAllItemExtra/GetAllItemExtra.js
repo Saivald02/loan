@@ -19,6 +19,7 @@ export const GetAllItem = ({ all }) => {
             <div className="table-item">{all.currInterest}</div>
             <div className="table-item">{all.downPay}</div>
             <div className="table-item">{all.total}</div>
+            <div className="table-item">{all.totalOldLoan}</div>
         </div>
     );
 };

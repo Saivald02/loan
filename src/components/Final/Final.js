@@ -11,21 +11,19 @@ import { PropTypes } from 'prop-types';
 </div>
 <li className="display-list-item table-item-2">{all.i} interest: {all.currInterest} amount: {all.amount} payment: {all.downPay} total: {all.total}</li>
 */
-export const GetAllItem = ({ all }) => {
+export const Final = ({ all }) => {
     return (
-        <div className="table-middle-item">
-            <div className="table-item">{all.i}</div>
-            <div className="table-item">{all.amount}</div>
-            <div className="table-item">{all.currInterest}</div>
-            <div className="table-item">{all.downPay}</div>
-            <div className="table-item">{all.total}</div>
+        <div className="table-bottom-item">
+            <div className="table-item">Total:</div>
+            <div className="table-item"> {all.total_int}</div>
+            <div className="table-item"> {all.loanAmount}</div>
+            <div className="table-item"> {all.total_pay}</div>
         </div>
     );
 };
 
-
-GetAllItem.propTypes = {
+Final.propTypes = {
     rooms: PropTypes.string
 };
 
-export default GetAllItem;
+export default Final;

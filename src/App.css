@@ -1,3 +1,20 @@
+#canvas{
+  border: solid 1px blue;
+  width: 50%;
+}
+
+/*
+@thulianPink: #E06C9F;
+@persianPink: #F283B6;
+@spanishPink: #EDBFB7;
+@laurelGreen: #B5BFA1;
+@desaturatedCyan: #6E9887;
+@black: #000000;
+@white: #FFFFFF;
+display: grid;
+justify-content: center; /* horizontal center
+align-items: center;    /* vertical center
+*/
 .App {
   text-align: center;
 }
@@ -36,6 +53,64 @@
         padding: 0;
         margin: 0;
         background-color: #F283B6;
+    }
+
+    .inputs {
+        background-color: #B5BFA1;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+
+    }
+
+    .inputs > .input-item {
+        padding: 10px;
+    }
+    .inputs > .input-item:nth-child(odd) {
+        background-color: #6E9887;
+    }
+
+    .inputs > .input-item {
+
+    }
+
+    .display {
+        /*border-style: solid;*/
+    }
+
+    .display > .table-top {
+        display: grid;
+        grid-template-columns: 150px 150px auto auto 150px 150px;
+        padding: 20px;
+    }
+
+    .display > .table-middle > .table-middle-item {
+        /*border-style: solid;*/
+        padding: 20px;
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: 150px 150px auto auto 150px 150px;
+
+    }
+
+    .display > .table-middle > .table-middle-item:nth-child(odd) {
+        background-color: #EDBFB7;
+
+    }
+
+    .display > .table-middle > .table-middle-item:nth-child(even) {
+        background-color: #6E9887;
+    }
+
+    .display > .table-bottom-item {
+        /*border-style: solid;*/
+        padding: 20px;
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: 150px 250px auto 250px 150px;
+    }
+
+    .display > .table-bottom-item > .table-item:nth-child(1) {
+        grid-column: 1 / span 2;
     }
 }
 

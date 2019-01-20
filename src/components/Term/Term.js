@@ -24,7 +24,7 @@ export class Term extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="input-item">
                 <p>Term</p>
                 <div className="">
                     <input

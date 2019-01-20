@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
-import CalculateButton from './components/CalculateButton/CalculateButton';
-import TestComp from './components/TestComp/TestComp';
-import EndAmount from './components/EndAmount/EndAmount';
+//import CalculateButton from './components/CalculateButton/CalculateButton';
+
+/*
 import LoanAmount from './components/LoanAmount/LoanAmount';
 import Interest from './components/Interest/Interest';
 import Term from './components/Term/Term';
+
+import Extra from './components/Extra/Extra';
+*/
 //import DisplayWrapper from './components/DisplayWrapper/DisplayWrapper';
 import Display from './components/Display/Display';
+import Welcome from './components/Welcome/Welcome';
+
 
 
 // https://codeclimate.com
@@ -17,38 +22,19 @@ import Display from './components/Display/Display';
 // https://www.heroku.com/
 // https://saivald02-loan.herokuapp.com/
 
-
 // https://medium.com/codeclan/testing-react-with-jest-and-enzyme-20505fec4675
 
 // create reaact-app + redux
 // https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8
+
 export class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            https://saivald02-loan.herokuapp.com/
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <div className="wrapper"> 
-          <CalculateButton/>
-          <TestComp />
-          <EndAmount />
-          <Interest />
-          <LoanAmount />
-          <Term />
+        <h1>https://saivald02-loan.herokuapp.com/</h1>
+        <div className="wrapper">
+          <Welcome />
           <Display />
-          <div>hello test comp</div>
         </div>
       </div>
     );
