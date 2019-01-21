@@ -4,10 +4,10 @@ import { shallow } from 'enzyme';
 
 import { Extra } from './Extra';
 
-describe('Final', () => {
+describe('Extra', () => {
     it('should contain the item provided -> Extra', () => {
 
         const component = shallow(<Extra />);
-        expect(component.find('div p').first().text()).toEqual('Extra Payment');
+        expect(component.find('div').first().text()).toEqual('disabled');
     });
 });
