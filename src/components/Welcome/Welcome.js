@@ -3,7 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { startup } from '../../actions/startupActions';
-
+import { calculateNow } from '../../actions/calculateActions';
+import { calculations_clear } from '../../actions/calculationsActions';
 //import Extra from '../Extra/Extra';
 
 export class Welcome extends React.Component {
@@ -25,51 +26,62 @@ export class Welcome extends React.Component {
       this.props.startup(event.target.value);
     }
 
+    calc(value) {
+        this.props.calculateNow(value);
+        this.props.calculations_clear();
+    }
+
     render() {
-
-        return (
-            <div>
+        if(this.props.calculate === true) {
+            return (
+              <div className="">
+                  <button type="button" className="" onClick={() => this.calc(false)}>back</button>
+              </div>
+            );
+        } else {
+            return (
                 <div>
-                    <label>
-                        <input
-                          type="radio"
-                          value="your_loan"
-                          checked={this.state.choice === "your_loan"}
-                          onChange={this.handleChange}
-                        />
-                        Calculate your loan
-                    </label>
+                    <div>
+                        <label>
+                            <input
+                              type="radio"
+                              value="your_loan"
+                              checked={this.state.choice === "your_loan"}
+                              onChange={this.handleChange}
+                            />
+                            Calculate your loan
+                        </label>
 
-                    <label>
-                        <input
-                          type="radio"
-                          value="savings"
-                          checked={this.state.choice === "savings"}
-                          onChange={this.handleChange}
-                        />
-                        Savings
-                    </label>
+                        <label>
+                            <input
+                              type="radio"
+                              value="savings"
+                              checked={this.state.choice === "savings"}
+                              onChange={this.handleChange}
+                            />
+                            Savings
+                        </label>
 
-                    <label>
-                        <input
-                          type="radio"
-                          value="lower_your_loan"
-                          checked={this.state.choice === "lower_your_loan"}
-                          onChange={this.handleChange}
-                        />
-                        Lower your loan
-                    </label>
+                        <label>
+                            <input
+                              type="radio"
+                              value="lower_your_loan"
+                              checked={this.state.choice === "lower_your_loan"}
+                              onChange={this.handleChange}
+                            />
+                            Lower your loan
+                        </label>
 
+                    </div>
                 </div>
-
-            </div>
-        );
+            );
+        }
     }
 };
 
 
-const mapStateToProps = ({ start }) => {
-    return { start };
+const mapStateToProps = ({ start, calculate }) => {
+    return { start, calculate };
 }
 
-export default connect(mapStateToProps, { startup })(Welcome);
+export default connect(mapStateToProps, { startup, calculations_clear, calculateNow })(Welcome);

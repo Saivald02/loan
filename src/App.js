@@ -33,6 +33,7 @@ export class App extends Component {
         <div className="wrapper">
           <Welcome />
           <Choice />
+          
         </div>
       </div>
     );

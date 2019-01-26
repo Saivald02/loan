@@ -1,11 +1,16 @@
-import { CALCULATIONS_LOWER, CALCULATIONS_SAVINGS, CALCULATIONS_LOAN } from '../constants/calculationsConstants';
-
+import {
+    CALCULATIONS_LOWER,
+    CALCULATIONS_SAVINGS,
+    CALCULATIONS_LOAN,
+    CALCULATIONS_CLEAR
+} from '../constants/calculationsConstants';
 
 const initialState = {
     finalCanvas: {},
     finalObj: {},
     list: []
 }
+
 const calculationsReducer = ( state = initialState, action ) => {
 
     var list = [];
@@ -21,8 +26,8 @@ const calculationsReducer = ( state = initialState, action ) => {
     var total_interest = 0;
     var total_payment = 0;
     var finalPay = 0;
-    var total_pay = 0;
-    var total_int = 0;
+    //var total_pay = 0;
+    //var total_int = 0;
 
     // extra
     var extraTerm = 0;
@@ -54,23 +59,37 @@ const calculationsReducer = ( state = initialState, action ) => {
             oldLoantotal = oldLoantotal + downPay + currInterest;
             if(loanFinished === false) {
                 if( (downPay + extra) > (extraAmountLeft + currInterest)) {
-                    //extraAmountLeft
-                    //console.log('amount: ' + amount + ' inter: ' + currInterest + ' payment: ' + amount);
-
                     extraTerm = y;
-                    list.push({ i: y, amount: extraAmountLeft.toFixed(2), currInterest: currInterest.toFixed(2), downPay: extraAmountLeft.toFixed(2), total: (extraAmountLeft + currInterest).toFixed(2), totalOldLoan: total.toFixed(2) });
+                    list.push({
+                        i: y,
+                        amount: extraAmountLeft.toFixed(2),
+                        currInterest: currInterest.toFixed(2),
+                        downPay: extraAmountLeft.toFixed(2),
+                        total: (extraAmountLeft + currInterest).toFixed(2),
+                        totalOldLoan: total.toFixed(2)
+                    });
                 } else {
-                    //console.log('amount: ' + amount + ' inter: ' + currInterest + ' payment: ' + downPay);
-                    list.push({ i: y, amount: extraAmountLeft.toFixed(2), currInterest: currInterest.toFixed(2), downPay: (total + extra).toFixed(2), total: (total + extra + currInterest).toFixed(2), totalOldLoan: total.toFixed(2) });
+                    list.push({
+                        i: y,
+                        amount: extraAmountLeft.toFixed(2),
+                        currInterest: currInterest.toFixed(2),
+                        downPay: (total + extra).toFixed(2),
+                        total: (total + extra + currInterest).toFixed(2),
+                        totalOldLoan: total.toFixed(2)
+                    });
 
                     total_payment = total_payment + downPay + currInterest + extra;
                     total_interest = total_interest + currInterest;
-
-                    //oldLoantotal = oldLoantotal + downPay + currInterest;
                 }
             } else if(loanFinished === true) {
-                //console.log(currInterest);
-                list.push({ i: y, amount: 0, currInterest: 0, downPay: 0, total: 0, totalOldLoan: total.toFixed(2) });
+                list.push({
+                    i: y,
+                    amount: 0,
+                    currInterest: 0,
+                    downPay: 0,
+                    total: 0,
+                    totalOldLoan: total.toFixed(2)
+                });
             }
 
             extraAmountLeft = extraAmountLeft - downPay - extra;
@@ -85,15 +104,20 @@ const calculationsReducer = ( state = initialState, action ) => {
             }
         }
 
-        total_pay = oldLoantotal.toFixed(0);
-        total_int = total_interest.toFixed(0);
-        finalObj = { loanAmount: action.payload.loanAmount, total_int: total_int, total_pay: total_pay };
-        //const finalCanvass = {loanAmount: 1000, term: 24 };
-        finalCanvas = { loanAmount: action.payload.loanAmount, term: months, extraTerm: extraTerm };
-        console.log('return calculations');
-        console.log(finalObj);
-        console.log(finalCanvas);
-        console.log(list);
+        //total_pay = oldLoantotal.toFixed(0);
+        //total_int = total_interest.toFixed(0);
+
+        finalObj = {
+            loanAmount: action.payload.loanAmount,
+            total_int: total_interest.toFixed(0),
+            total_pay: oldLoantotal.toFixed(0)
+        };
+
+        finalCanvas = {
+            loanAmount: action.payload.loanAmount,
+            term: months,
+            extraTerm: extraTerm
+        };
 
         return {
             finalCanvas: finalCanvas,
@@ -110,49 +134,67 @@ const calculationsReducer = ( state = initialState, action ) => {
             months = Number(action.payload.term) * 12;
             extra = Number(action.payload.extra);
             downPay = Number((amount / months));
-              console.log('calculations reducer');
-              console.log(action.payload);
-                console.log('no extra payment');
+            console.log('calculations reducer');
+            console.log(action.payload);
+            console.log('no extra payment');
 
-                for(var i = months, j = 1; 0 <= i; i--, j++) {
-                    currInterest = Number(interest_rate * amount);
-                    total = Number(downPay + currInterest);
+            for(var i = months, j = 1; 0 <= i; i--, j++) {
+                currInterest = Number(interest_rate * amount);
+                total = Number(downPay + currInterest);
 
-                    if(downPay > (amount + currInterest)) {
-                        //console.log('amount: ' + amount + ' inter: ' + currInterest + ' payment: ' + amount);
-                        finalPay = Number(amount + currInterest);
-                        list.push({i: j, amount: amount.toFixed(2), currInterest: currInterest.toFixed(2), downPay: finalPay.toFixed(2), total: finalPay.toFixed(2) });
-                    } else {
-                        //console.log('amount: ' + amount + ' inter: ' + currInterest + ' payment: ' + downPay);
-                        list.push({i: j, amount: amount.toFixed(2), currInterest: currInterest.toFixed(2), downPay: downPay.toFixed(2), total: total.toFixed(2)});
-                        total_payment = total_payment + downPay + currInterest;
-                        total_interest = total_interest + currInterest;
-                    }
+                if(downPay > (amount + currInterest)) {
 
-                    amount = Number(amount - downPay);
+                    finalPay = Number(amount + currInterest);
+                    list.push({
+                        i: j,
+                        amount: amount.toFixed(2),
+                        currInterest: currInterest.toFixed(2),
+                        downPay: finalPay.toFixed(2),
+                        total: finalPay.toFixed(2)
+                    });
+                } else {
 
-                    if(amount < 1) {
-                        break;
-                    }
+                    list.push({
+                        i: j,
+                        amount: amount.toFixed(2),
+                        currInterest: currInterest.toFixed(2),
+                        downPay: downPay.toFixed(2),
+                        total: total.toFixed(2)
+                    });
+
+                    total_payment = total_payment + downPay + currInterest;
+                    total_interest = total_interest + currInterest;
                 }
 
-                total_pay = total_payment.toFixed(0);
-                total_int = total_interest.toFixed(0);
+                amount = Number(amount - downPay);
 
-        finalObj = { loanAmount: action.payload.loanAmount, total_int: total_int, total_pay: total_pay };
-        //const finalCanvass = {loanAmount: 1000, term: 24 };
-        finalCanvas = { loanAmount: action.payload.loanAmount, term: months, extraTerm: extraTerm };
-        console.log('return calculations');
-        console.log(finalObj);
-        console.log(finalCanvas);
-        console.log(list);
+                if(amount < 1) {
+                    break;
+                }
+            }
 
-        return {
-                    finalCanvas: finalCanvas,
-                    finalObj: finalObj,
-                    list: list
-                    //arr: [ ...state.arr, action.payload.msg ]
-          }
+            finalObj = {
+                loanAmount: action.payload.loanAmount,
+                total_int: total_interest.toFixed(0),
+                total_pay: total_payment.toFixed(0)
+            };
+
+            finalCanvas = {
+                loanAmount: action.payload.loanAmount,
+                term: months,
+                extraTerm: extraTerm
+            };
+
+            //console.log(finalObj);
+            //console.log(finalCanvas);
+
+            return {
+                finalCanvas: finalCanvas,
+                finalObj: finalObj,
+                list: list
+                //arr: [ ...state.arr, action.payload.msg ]
+            }
+        case CALCULATIONS_CLEAR: return initialState;
         default: return state;
     }
 };

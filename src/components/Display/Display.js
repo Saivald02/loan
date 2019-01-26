@@ -8,12 +8,14 @@ import Table from '../Table/Table';
 import TableExtra from '../TableExtra/TableExtra';
 import FinalWrapper from '../Final/Final';
 
+/*
 import CalculateButton from '../CalculateButton/CalculateButton';
 
 import LoanAmount from '../LoanAmount/LoanAmount';
 import Interest from '../Interest/Interest';
 import Term from '../Term/Term';
 import ExtraToggle from '../ExtraToggle/ExtraToggle';
+*/
 
 // https://www.npmjs.com/package/react-charts
 
@@ -22,36 +24,17 @@ import Canvas from '../Canvas/Canvas';
 
 export class Display extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isToggleOn: true
-
-        };
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }));
-    }
-
-    componentDidMount() {
-
-    }
-
     render() {
         console.log('display render');
 
         var extra = Number(this.props.extra);
         const { list } = this.props;
-        console.log(list);
+        //console.log(list);
         if(this.props.calculate === true && extra === 0) {
             return (
                 <div className="">
-
                     <div className="display">
+                        <div>Results</div>
                         <Canvas all={list.finalCanvas}/>
                         <Table/>
                         <GetAll>
@@ -74,17 +57,6 @@ export class Display extends React.Component {
                       <FinalWrapper all={list.finalObj}/>
                   </div>
               </div>
-            );
-        } else {
-            return (
-                <div className="inputs">
-                    <Interest />
-                    <LoanAmount />
-                    <Term />
-                    <ExtraToggle />
-
-                    <CalculateButton />
-                </div>
             );
         }
     }

@@ -32,7 +32,7 @@ export class CalculateLoan extends React.Component {
             term: this.props.term
         }
 
-        this.props.calculations(data);
+        this.props.calculations_loan(data);
     }
 
 
