@@ -16,23 +16,17 @@ export class Extra extends React.Component {
     }
 
     render() {
-        if(this.props.toggleExtra === true) {
-            return (
-              <div className="input-item">
-                  <div>Extra Payment</div>
-                  <div className="">
-                      <input
-                          type="text"
-                          className=""
-                          onInput={(e) => this.inputExtra(e.target.value)} />
-                  </div>
+        return (
+          <div className="input-item">
+              <div>Extra Payment</div>
+              <div className="">
+                  <input
+                      type="text"
+                      className=""
+                      onInput={(e) => this.inputExtra(e.target.value)} />
               </div>
-            );
-        } else {
-            return (
-                <div>disabled</div>
-            );
-        }
+          </div>
+        );
     }
 };
 

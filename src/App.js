@@ -12,10 +12,8 @@ import Term from './components/Term/Term';
 import Extra from './components/Extra/Extra';
 */
 //import DisplayWrapper from './components/DisplayWrapper/DisplayWrapper';
-import Display from './components/Display/Display';
+import Choice from './components/Choice/Choice';
 import Welcome from './components/Welcome/Welcome';
-
-
 
 // https://codeclimate.com
 // https://circleci.com
@@ -34,7 +32,7 @@ export class App extends Component {
         <h1>https://saivald02-loan.herokuapp.com/</h1>
         <div className="wrapper">
           <Welcome />
-          <Display />
+          <Choice />
         </div>
       </div>
     );

@@ -8,6 +8,6 @@ describe('Extra', () => {
     it('should contain the item provided -> Extra', () => {
 
         const component = shallow(<Extra />);
-        expect(component.find('div').first().text()).toEqual('disabled');
+        expect(component.find('div').first().text()).toEqual('Extra Payment');
     });
 });

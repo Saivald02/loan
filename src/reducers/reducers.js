@@ -7,7 +7,8 @@ import calculate from './calculateReducer';
 import extra from './extraReducer';
 import toggleExtra from './extraPayReducer';
 import list from './calculationsReducer';
+import start from './startupReducer';
 
 export default combineReducers({
-    term, interest, loanAmount, calculate, extra, list, toggleExtra
+    term, interest, loanAmount, calculate, extra, list, toggleExtra, start
 });

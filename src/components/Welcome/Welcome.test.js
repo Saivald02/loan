@@ -8,6 +8,6 @@ describe('Welcome', () => {
 
   it('should contain the item provided -> welcome', () => {
       const component = shallow(<Welcome />);
-      expect(component.find('h2').first().text('Welcome to loan calculator')).toEqual('Welcome to loan calculator');
+      expect(component.find('div div label').first().text('Calculate your loan')).toEqual('Calculate your loan');
   });
 });
