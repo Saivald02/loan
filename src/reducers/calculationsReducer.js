@@ -66,6 +66,7 @@ const calculationsReducer = ( state = initialState, action ) => {
                         currInterest: currInterest.toFixed(2),
                         downPay: extraAmountLeft.toFixed(2),
                         total: (extraAmountLeft + currInterest).toFixed(2),
+                        oldLoanAmount: amount,
                         totalOldLoan: total.toFixed(2)
                     });
                 } else {
@@ -75,6 +76,7 @@ const calculationsReducer = ( state = initialState, action ) => {
                         currInterest: currInterest.toFixed(2),
                         downPay: (total + extra).toFixed(2),
                         total: (total + extra + currInterest).toFixed(2),
+                        oldLoanAmount: amount,
                         totalOldLoan: total.toFixed(2)
                     });
 
@@ -88,6 +90,7 @@ const calculationsReducer = ( state = initialState, action ) => {
                     currInterest: 0,
                     downPay: 0,
                     total: 0,
+                    oldLoanAmount: amount,
                     totalOldLoan: total.toFixed(2)
                 });
             }

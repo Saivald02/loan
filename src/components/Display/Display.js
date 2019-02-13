@@ -10,10 +10,12 @@ import FinalWrapper from '../Final/Final';
 
 import Results from '../Results/Results';
 
+import ChartWrapper from '../ChartWrapper/ChartWrapper';
+
 // https://www.npmjs.com/package/react-charts
 
-import Canvas from '../Canvas/Canvas';
-
+//import Canvas from '../Canvas/Canvas';
+// <Canvas all={list.finalCanvas}/>
 export class Display extends React.Component {
 
     render() {
@@ -27,7 +29,8 @@ export class Display extends React.Component {
                 <div className="">
                     <div className="display">
                         <Results />
-                        <Canvas all={list.finalCanvas}/>
+
+                        <ChartWrapper all={list}/>
                         <Table/>
                         <GetAll>
                             { list.list.map((one, i) => (<GetAllItem key={i} all={one} />)) }
@@ -37,11 +40,14 @@ export class Display extends React.Component {
                 </div>
             );
         } else if (this.props.calculate === true && this.props.start === 'lower_your_loan') {
+            console.log(list);
             return (
               <div className="">
+
                   <div className="display">
                       <Results />
-                      <Canvas all={list.finalCanvas}/>
+
+                      <ChartWrapper all={list}/>
                       <TableExtra/>
                       <GetAll>
                           { list.list.map((one, i) => (<GetAllItemExtra key={i} all={one} />)) }

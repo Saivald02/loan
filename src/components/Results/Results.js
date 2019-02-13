@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 export class Results extends React.Component {
 
     render() {
-
         if(this.props.start === 'savings') {
             return (
                 <div className="">
